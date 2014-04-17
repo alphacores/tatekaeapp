@@ -3,7 +3,7 @@
 <div style="background-color:#ffd" width="100%">
 -->
 <div class="row">
-    <h2 class="col-md-12"><%= @event.name %></h2>
+    <h2 class="col-md-12 col-xs-12"><%= @event.name %></h2>
 </div>
 
 <div class="row">
@@ -11,23 +11,23 @@
 </div>
 
 <div class="row">
-    <p class="col-md-12">
+    <p class="col-md-12 col-xs-12">
         <%= @event.description %><br />
         <%= link_to '申込者管理', event_applicants_path(@event.str_id) %>
     </p>
 </div>
 
 <div class="row">
-    <p id="notice" class="col-md-12"><%= flash[:notice] %></p>
+    <p id="notice" class="col-md-12 col-xs-12"><%= flash[:notice] %></p>
 </div>
 
 <div class="row">
-    <p class="col-md-6">
+    <p class="col-md-6 col-xs-12">
         <%= render partial:"payment_list",locals:{
         payments: @event.payments.order("created_at"),
         event: @event} %>
     </p>
-    <p class="col-md-6">
+    <p class="col-md-6 col-xs-12">
         <%= render partial:"paticipant_list",locals:{
         paticipants: @event.paticipants.order("created_at"),
         event: @event} %>
@@ -35,7 +35,7 @@
 </div>
 
 <div class="row">
-    <p class="col-md-8">
+    <p class="col-md-8 col-xs-12">
         このイベントのurl<br />
         <input type="text" value="<%= @url %>" onTouchstart="this.select()"  onfocus="this.select()"style="width: 60%; font-size:0.8em" /><br />
         <span>
@@ -45,7 +45,7 @@
             </script>
         </span>
     </p>
-    <p class="col-md-4">
+    <p class="col-md-4 col-xs-12">
         <%#  link_to '<- イベント一覧', admin_events_path %> 
     </p>
 </div>
