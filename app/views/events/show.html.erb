@@ -1,38 +1,51 @@
+<!--
 <div style="background-color:#ffd" width="100%">
 <div style="background-color:#ffd" width="100%">
+-->
+<div class="row">
+    <h2 class="col-md-12"><%= @event.name %></h2>
+</div>
 
+<div class="row">
+    <h3 class="col-md-12">イベント説明<%= link_to '編集', edit_event_path(@event.str_id) %></h3>
+</div>
 
-<h2><%= @event.name %></h2>
-<p>
-  <b>イベント説明:</b><%= link_to '編集', edit_event_path(@event.str_id) %><br />
-  <%= @event.description %><br />
-	<%= link_to '申込者管理', event_applicants_path(@event.str_id) %>
-</p>
-	
-<p id="notice"><%= flash[:notice] %></p>
+<div class="row">
+    <p class="col-md-12">
+        <%= @event.description %><br />
+        <%= link_to '申込者管理', event_applicants_path(@event.str_id) %>
+    </p>
+</div>
 
-<p>
-	<%= render partial:"payment_list",locals:{
-		payments: @event.payments.order("created_at"),
-		event: @event} %>
-</p>
-<p>
-	<%= render partial:"paticipant_list",locals:{
-		paticipants: @event.paticipants.order("created_at"),
-		event: @event} %>
-</p>
-<p>
-	このイベントのurl<br />
-	<input type="text" value="<%= @url %>" onTouchstart="this.select()"  onfocus="this.select()"style="width: 60%; font-size:0.8em" /><br />
-	<span>
-		<script type="text/javascript" src="//media.line.me/js/line-button.js?v=20140127" ></script>
-		<script type="text/javascript">
-		new media_line_me.LineButton({"pc":false,"lang":"ja","type":"a","text":"<%= @event.name %> 立替清算","withUrl":true});
-		</script>
-	</span>
-</p>
-<p>
-	
-	<%#  link_to '<- イベント一覧', admin_events_path %> 
-</p>
+<div class="row">
+    <p id="notice" class="col-md-12"><%= flash[:notice] %></p>
+</div>
 
+<div class="row">
+    <p class="col-md-6">
+        <%= render partial:"payment_list",locals:{
+        payments: @event.payments.order("created_at"),
+        event: @event} %>
+    </p>
+    <p class="col-md-6">
+        <%= render partial:"paticipant_list",locals:{
+        paticipants: @event.paticipants.order("created_at"),
+        event: @event} %>
+    </p>
+</div>
+
+<div class="row">
+    <p class="col-md-8">
+        このイベントのurl<br />
+        <input type="text" value="<%= @url %>" onTouchstart="this.select()"  onfocus="this.select()"style="width: 60%; font-size:0.8em" /><br />
+        <span>
+            <script type="text/javascript" src="//media.line.me/js/line-button.js?v=20140127" ></script>
+            <script type="text/javascript">
+                new media_line_me.LineButton({"pc":false,"lang":"ja","type":"a","text":"<%= @event.name %> 立替清算","withUrl":true});
+            </script>
+        </span>
+    </p>
+    <p class="col-md-4">
+        <%#  link_to '<- イベント一覧', admin_events_path %> 
+    </p>
+</div>
